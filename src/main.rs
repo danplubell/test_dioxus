@@ -6,7 +6,12 @@ fn main() {
     dioxus::logger::init(Level::DEBUG).expect("logger failed to init");
     dioxus::launch(App);
 }
-
+#[component]
+fn Counter(count: Signal<i32>) -> Element {
+    rsx! {
+        button { onclick: move |_| count +=1 , "Increment" }
+    }
+}
 #[component]
 fn App() -> Element {
 
@@ -19,7 +24,8 @@ fn App() -> Element {
     });
 
     rsx! {
-        button { onclick: move |_| count += 1, "Increment" }
+        Counter{ count }
+//        button { onclick: move |_| count += 1, "Increment" }
 
         div { "Count is {count}" }
     }
