@@ -1,9 +1,6 @@
-mod components;
-
 use dioxus::logger::tracing::{debug, Level};
 use dioxus::prelude::*;
-use crate::components::effect::Effect;
-use crate::components::memo::Memo;
+use log::log;
 
 fn main() {
     dioxus::logger::init(Level::DEBUG).expect("logger failed to init");
@@ -31,10 +28,6 @@ fn App() -> Element {
 //        button { onclick: move |_| count += 1, "Increment" }
 
         div { "Count is {count}" }
-        div{"Effect"}
-        Effect{}
-        Memo{}
-        
     }
 }
 
